@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Button } from "./components/Button";
 import { MovieCard } from "./components/MovieCard";
@@ -24,9 +24,9 @@ interface GenreResponseProps {
 export function App() {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
 
-  function handleClickButton(id: number) {
+  const handleClickButton = useCallback((id: number) => {
     setSelectedGenreId(id);
-  }
+  }, []);
 
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
 
